@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="light" cx="78%" cy="8%" r="75%">
+      <stop offset="0" stop-color="#2a8fd0" stop-opacity=".55"/>
+      <stop offset=".45" stop-color="#0c3552" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#03070b" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pool" cx="62%" cy="58%" r="45%">
+      <stop offset="0" stop-color="#29aae1" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#29aae1" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="shell" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b3540"/>
+      <stop offset=".5" stop-color="#151c23"/>
+      <stop offset="1" stop-color="#0a0f14"/>
+    </linearGradient>
+    <linearGradient id="shellTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a4652"/>
+      <stop offset=".6" stop-color="#1a222a"/>
+      <stop offset="1" stop-color="#0d1318"/>
+    </linearGradient>
+    <linearGradient id="pcb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f2a2c"/>
+      <stop offset="1" stop-color="#071718"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2f35"/>
+      <stop offset="1" stop-color="#101418"/>
+    </linearGradient>
+    <linearGradient id="batt" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4b5866"/>
+      <stop offset="1" stop-color="#1c232b"/>
+    </linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5d6b77"/>
+      <stop offset=".5" stop-color="#cfdbe4"/>
+      <stop offset="1" stop-color="#4c5964"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="14"/></filter>
+    <pattern id="mat" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0v40" fill="none" stroke="#29aae1" stroke-opacity=".09" stroke-width="1.2"/></pattern>
+  </defs>
+
+  <!-- bench -->
+  <rect width="1200" height="600" fill="#04080c"/>
+  <rect width="1200" height="600" fill="url(#mat)"/>
+  <rect width="1200" height="600" fill="url(#light)"/>
+  <rect width="1200" height="600" fill="url(#pool)"/>
+
+  <!-- screwdriver -->
+  <g transform="rotate(-24 300 470)">
+    <rect x="120" y="455" width="190" height="30" rx="14" fill="#0f2f45" stroke="#29aae1" stroke-opacity=".6"/>
+    <path d="M140 462h150M140 478h150" stroke="#29aae1" stroke-opacity=".35" stroke-width="2"/>
+    <rect x="310" y="464" width="170" height="12" rx="3" fill="url(#steel)"/>
+    <path d="M480 464l18 6-18 6z" fill="#9fb0bd"/>
+  </g>
+  <!-- loose screws -->
+  <g fill="#8fa1ae" stroke="#cfdbe4" stroke-width="1">
+    <circle cx="470" cy="520" r="7"/><circle cx="505" cy="545" r="6"/><circle cx="1050" cy="505" r="7"/>
+  </g>
+  <g stroke="#2b3540" stroke-width="2"><path d="M465 520h10M505 541v8M1045 505h10"/></g>
+
+  <!-- shadow -->
+  <ellipse cx="760" cy="470" rx="330" ry="46" fill="#000" opacity=".7" filter="url(#soft)"/>
+
+  <!-- bottom shell with PCB (opened controller) -->
+  <g transform="translate(470 210)">
+    <path d="M110 20h360c70 0 110 40 120 110l22 150c8 60-50 92-92 50l-60-62H160l-60 62c-42 42-100 10-92-50l22-150C40 60 60 20 110 20z" fill="url(#shell)" stroke="#5cc4ee" stroke-opacity=".55" stroke-width="2.5"/>
+    <!-- board -->
+    <path d="M128 48h324c48 0 78 30 86 84l10 70H40l10-70c8-54 30-84 78-84z" fill="url(#pcb)" stroke="#2de0c0" stroke-opacity=".35"/>
+    <!-- traces -->
+    <g stroke="#2de0c0" stroke-opacity=".35" stroke-width="1.6" fill="none">
+      <path d="M90 170h80l20-20h70M300 150h60l18 18h90M210 70v40h40M380 70v30h-40M150 110h40l20 20M420 120l30 30h50"/>
+      <path d="M240 190v-26h110v26"/>
+    </g>
+    <!-- chips -->
+    <rect x="250" y="100" width="70" height="56" rx="4" fill="url(#chip)" stroke="#5cc4ee" stroke-opacity=".4"/>
+    <g fill="#d9b25c"><rect x="244" y="108" width="6" height="3"/><rect x="244" y="118" width="6" height="3"/><rect x="244" y="128" width="6" height="3"/><rect x="244" y="138" width="6" height="3"/><rect x="320" y="108" width="6" height="3"/><rect x="320" y="118" width="6" height="3"/><rect x="320" y="128" width="6" height="3"/><rect x="320" y="138" width="6" height="3"/></g>
+    <rect x="345" y="70" width="40" height="28" rx="3" fill="url(#chip)"/>
+    <rect x="180" y="72" width="34" height="24" rx="3" fill="url(#chip)"/>
+    <g fill="#c7a457"><circle cx="400" cy="160" r="5"/><circle cx="416" cy="160" r="5"/><circle cx="160" cy="150" r="5"/></g>
+    <!-- analog stick modules -->
+    <g>
+      <rect x="92" y="96" width="74" height="74" rx="8" fill="#1a2027" stroke="#5cc4ee" stroke-opacity=".5"/>
+      <circle cx="129" cy="133" r="24" fill="#0b0f13" stroke="#5cc4ee" stroke-width="2" filter="url(#glow)"/>
+      <circle cx="129" cy="133" r="10" fill="#2b3540"/>
+      <rect x="400" y="176" width="74" height="74" rx="8" fill="#1a2027" stroke="#5cc4ee" stroke-opacity=".5"/>
+      <circle cx="437" cy="213" r="24" fill="#0b0f13" stroke="#5cc4ee" stroke-width="2" filter="url(#glow)"/>
+      <circle cx="437" cy="213" r="10" fill="#2b3540"/>
+    </g>
+    <!-- battery pack -->
+    <rect x="200" y="208" width="170" height="54" rx="10" fill="url(#batt)" stroke="#fcb040" stroke-opacity=".75" stroke-width="2"/>
+    <rect x="214" y="222" width="70" height="8" rx="4" fill="#fcb040" opacity=".8"/>
+    <rect x="214" y="238" width="44" height="6" rx="3" fill="#9fb0bd" opacity=".5"/>
+    <!-- ribbon cable going to top shell -->
+    <path d="M300 48c0-40 -10-70 -40-96" fill="none" stroke="#c99a3c" stroke-width="16" stroke-opacity=".85"/>
+    <path d="M300 48c0-40 -10-70 -40-96" fill="none" stroke="#f4cf86" stroke-width="2" stroke-dasharray="3 5"/>
+  </g>
+
+  <!-- top shell lifted off -->
+  <g transform="translate(330 30) rotate(-8 260 120)">
+    <path d="M110 20h300c62 0 98 34 108 96l12 70c6 38-30 54-56 30l-40-38H142l-40 38c-26 24-62 8-56-30l12-70c10-62 46-96 108-96z" fill="url(#shellTop)" stroke="#5cc4ee" stroke-opacity=".8" stroke-width="2.5" filter="url(#glow)"/>
+    <!-- holes for sticks and buttons -->
+    <circle cx="150" cy="95" r="26" fill="#05090d" stroke="#5cc4ee" stroke-opacity=".5"/>
+    <circle cx="370" cy="150" r="26" fill="#05090d" stroke="#5cc4ee" stroke-opacity=".5"/>
+    <g fill="#05090d" stroke="#5cc4ee" stroke-opacity=".5">
+      <circle cx="400" cy="70" r="11"/><circle cx="428" cy="96" r="11"/><circle cx="372" cy="96" r="11"/><circle cx="400" cy="122" r="11"/>
+    </g>
+    <path d="M196 140h18v-18h14v18h18v14h-18v18h-14v-18h-18z" fill="#05090d" stroke="#5cc4ee" stroke-opacity=".5"/>
+    <!-- rim highlight -->
+    <path d="M120 24h290c56 0 88 30 98 86" fill="none" stroke="#bfe9fb" stroke-opacity=".7" stroke-width="2"/>
+  </g>
+
+  <!-- loose buttons -->
+  <g filter="url(#glow)">
+    <circle cx="1020" cy="190" r="15" fill="#0b1117" stroke="#29aae1" stroke-width="2"/>
+    <circle cx="1060" cy="225" r="15" fill="#0b1117" stroke="#fcb040" stroke-width="2"/>
+    <circle cx="1000" cy="240" r="15" fill="#0b1117" stroke="#29aae1" stroke-width="2"/>
+  </g>
+
+  <!-- vignette -->
+  <rect width="1200" height="600" fill="url(#light)" opacity=".25"/>
+</svg>
