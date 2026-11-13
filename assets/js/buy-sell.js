@@ -23,12 +23,14 @@
     var rules = {
       model: function (v) { return v.trim().length >= 2 ? "" : "Tell us the model."; },
       name: function (v) { return v.trim().length >= 2 ? "" : "Enter your name."; },
-      phone: function (v) { return digits(v).length === 10 ? "" : "Enter a 10-digit phone number."; }
+      phone: function (v) { return digits(v).length === 10 ? "" : "Enter a 10-digit phone number."; },
+      // optional: an all-number entry must be a 15-digit IMEI; letters mean a serial number
+      imei: function (v) { var s = v.replace(/[\s-]/g, ""); return !s || /[a-z]/i.test(s) || /^\d{15}$/.test(s) ? "" : "An IMEI is 15 digits. Check it and try again."; }
     };
     function check(f, show) {
       var msg = rules[f.name](f.value);
       if (show) {
-        var err = document.getElementById(f.getAttribute("aria-describedby"));
+        var err = document.getElementById(f.id + "-err");
         f.setAttribute("aria-invalid", msg ? "true" : "false");
         if (err) { err.textContent = msg; err.hidden = !msg; }
       }
@@ -49,14 +51,16 @@
       e.preventDefault();
       var bad = null;
       required.forEach(function (f) { if (check(f, true) && !bad) bad = f; });
-      if (bad) { bad.focus(); return; }
+      if (bad) { var more = bad.closest("details"); if (more) more.open = true; bad.focus(); return; }
       if (form.elements._honey.value || Date.now() - loadedAt < 2500) { finish(); return; }
 
       var data = {};
       [].forEach.call(form.elements, function (f) {
         if (!f.name || f.name === "_honey" || f.type === "submit") return;
-        if (f.type === "radio" && !f.checked) return;
-        if (f.value.trim()) data[f.name] = f.name === "phone" ? fmtPhone(f.value) : f.value.trim();
+        if ((f.type === "radio" || f.type === "checkbox") && !f.checked) return;
+        if (!f.value.trim()) return;
+        var v = f.name === "phone" ? fmtPhone(f.value) : f.value.trim();
+        data[f.name] = f.type === "checkbox" && data[f.name] ? data[f.name] + ", " + v : v;
       });
       var subject = form.getAttribute("data-subject") || "Website request";
       data._subject = subject + ": " + (data.model || "") + " (" + data.name + ")";

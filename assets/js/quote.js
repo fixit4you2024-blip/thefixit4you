@@ -252,15 +252,18 @@
   function renderIdle(dev) {
     result.classList.add("is-idle");
     var starts = [], pr = P.prices || {}, seen = {};
+    // came from a repair link (e.g. Services → Screen replacement): show that repair on every device
+    var byRepair = !dev && state.repair ? state.repair : null;
+    var repName = byRepair ? (P.repairs[byRepair] || byRepair) : "";
     Object.keys(pr).forEach(function (k) {
       var p = k.split("|"), key = p[0] + "|" + p[2];
-      if (seen[key] || (dev && p[0] !== dev.id)) return;
+      if (seen[key] || (dev && p[0] !== dev.id) || (byRepair && p[2] !== byRepair)) return;
       seen[key] = 1;
       var d = deviceById(p[0]);
       if (d) starts.push({ dev: d, repair: p[2], from: lowest(p[0], p[2]) });
     });
     if (starts.length) {
-      result.appendChild(el("p", "quote-kicker", dev ? dev.label + " starting prices" : "Starting prices"));
+      result.appendChild(el("p", "quote-kicker", dev ? dev.label + " starting prices" : byRepair ? repName + " starting prices" : "Starting prices"));
       var ul = el("ul", "quote-starts");
       starts.slice(0, 5).forEach(function (s) {
         var li = el("li");
@@ -275,10 +278,10 @@
       result.appendChild(ul);
     }
     result.appendChild(el("p", "quote-empty",
-      !dev ? "Pick your device to see your price."
+      !dev ? (byRepair ? "Pick your device to see your " + (/^[A-Z]{2}/.test(repName) ? repName : repName.toLowerCase()) + " price." : "Pick your device to see your price.")
         : !state.model ? "Now choose the model."
         : "Last step: what needs fixing?"));
-    result.appendChild(inclList(["90-day technical warranty", "Walk-ins welcome", "Most phones in about 30 min", "$5–$10 discounts"]));
+    result.appendChild(inclList(["90-day technical warranty", "Walk-ins welcome", "Phone screens in 10–15 min", "$5–$10 discounts"]));
     var s = statusLine();
     if (s) result.appendChild(s);
   }
@@ -326,7 +329,8 @@
     var inc = [];
     if (!isService) inc.push("90-day technical warranty");
     if (state.repair !== "sell") {
-      inc.push(PHONES.indexOf(dev.id) >= 0 && QUICK.indexOf(state.repair) >= 0 ? "Same day, about 30 min" : "Time given up front");
+      var tm = P.repairTime ? P.repairTime(dev.id, state.repair) : "";
+      inc.push(tm ? "Typical time: " + tm : "Time given up front");
     }
     inc.push("Walk-ins welcome");
     if (state.repair !== "sell") inc.push("$5–$10 discounts");

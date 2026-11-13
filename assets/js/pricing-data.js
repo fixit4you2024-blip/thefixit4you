@@ -352,5 +352,22 @@ window.FIXIT_PRICING = {
         .concat([{ id: "genuine", label: "Genuine Apple" }]);
     }
     return [{ id: "aftermarket", label: "Aftermarket" }, { id: "genuine", label: this.genuineLabel(device, model) }];
+  },
+
+  // Typical repair times (owner confirmed 2026-11-13). Phones only; tablets,
+  // laptops and consoles are usually 1–2 days (some the same day).
+  phoneTimes: {
+    "screen": "10–15 min",
+    "battery": "15–25 min",
+    "camera": "35–55 min",
+    "charging-port": "Over 1 hour",
+    "back-glass": "Over 1 hour",
+    "water": "1–2 days"
+  },
+  // Short label for a device + repair, or "" when we give the time up front
+  repairTime: function (device, repair) {
+    if (["iphone", "samsung", "phone-other"].indexOf(device) >= 0) return this.phoneTimes[repair] || "";
+    if (["tablet", "laptop", "console"].indexOf(device) >= 0 && repair !== "diagnostic") return "1–2 days, some same day";
+    return "";
   }
 };

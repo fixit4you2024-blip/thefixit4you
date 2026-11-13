@@ -1204,6 +1204,9 @@ body.nav-open .nav-toggle .icon-open { display: none; }
 /* ---------- Hero: animated hologram background (no photo) ---------- */
 .holo-media::after { display: none; }
 .holo { position: absolute; left: 0; top: 4%; width: 100%; height: 92%; overflow: visible; }
+/* Desktop: phone sits beside the headline block, above the info cards */
+@media (min-width: 1024px) { .holo { top: 2%; height: 66%; } }
+@media (min-width: 600px) and (max-width: 1023px) { .hero-media .holo { top: 2%; height: 80%; } }
 .holo .h-ring { transform-box: view-box; transform-origin: 300px 300px; }
 .h-r1 { animation: h-spin 90s linear infinite; }
 .h-r2 { animation: h-spin 60s linear infinite reverse; }
@@ -1215,8 +1218,24 @@ body.nav-open .nav-toggle .icon-open { display: none; }
 @keyframes h-spin { to { transform: rotate(360deg); } }
 .h-phone { transform-box: view-box; transform-origin: 300px 300px; animation: h-float 6s ease-in-out infinite; }
 @keyframes h-float { 0%, 100% { transform: translateY(-8px); } 50% { transform: translateY(8px); } }
-.h-beam { animation: h-beam 3.6s cubic-bezier(.45,0,.35,1) infinite; }
-@keyframes h-beam { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: 1; } 80% { transform: translateY(340px); opacity: 1; } 100% { transform: translateY(340px); opacity: 0; } }
+/* Phone screen: lock screen (static by default; animated story only with motion allowed) */
+.holo .h-date { font: 600 9px/1 var(--font-body, sans-serif); letter-spacing: 2px; fill: #8fb3c6; }
+.holo .h-clock { font: 700 38px/1 var(--font-display); fill: #fff; }
+.holo .h-open text { font: 500 9.5px/1 var(--font-body, sans-serif); fill: #c9dbe5; }
+.holo .h-fixed-t { font: 700 11px/1 var(--font-body, sans-serif); fill: #3ddc84; }
+.h-crack, .h-beam, .h-fixed { opacity: 0; }
+.h-beam, .h-heal { transform-box: view-box; }
+/* 10s loop: crack appears → beam sweeps down and erases it → "Fixed" → clean lock screen */
+.js-fx .h-crack { animation: ph-crack 10s ease-out infinite; }
+.js-fx .h-heal  { animation: ph-heal 10s cubic-bezier(.45,0,.35,1) infinite; }
+.js-fx .h-beam  { animation: ph-beam 10s cubic-bezier(.45,0,.35,1) infinite; }
+.js-fx .h-lock  { animation: ph-lock 10s ease-in-out infinite; }
+.js-fx .h-fixed { animation: ph-fixed 10s ease-out infinite; transform-box: fill-box; transform-origin: center; }
+@keyframes ph-crack { 0%, 2% { opacity: 0; } 4%, 46% { opacity: 1; } 47%, 100% { opacity: 0; } }
+@keyframes ph-heal  { 0%, 24% { transform: translateY(0); } 44%, 46% { transform: translateY(290px); } 47%, 100% { transform: translateY(0); } }
+@keyframes ph-beam  { 0%, 23% { transform: translateY(0); opacity: 0; } 25% { transform: translateY(0); opacity: 1; } 44% { transform: translateY(290px); opacity: 1; } 47%, 100% { transform: translateY(290px); opacity: 0; } }
+@keyframes ph-lock  { 0%, 2% { opacity: 1; } 5%, 30% { opacity: .22; } 46%, 100% { opacity: 1; } }
+@keyframes ph-fixed { 0%, 44% { opacity: 0; transform: scale(.85); } 48% { opacity: 1; transform: scale(1); } 68% { opacity: 1; transform: scale(1); } 74%, 100% { opacity: 0; transform: scale(1); } }
 .h-brackets { animation: node-blink 2.6s ease-in-out infinite; }
 .h-breathe { transform-box: view-box; transform-origin: 380px 420px; animation: h-breathe 7s ease-in-out infinite; }
 @keyframes h-breathe { 0%, 100% { opacity: .6; transform: scale(.92); } 50% { opacity: 1; transform: scale(1.08); } }
@@ -1528,6 +1547,24 @@ fieldset.field legend { display: block; padding: 0; font-weight: 700; margin-bot
 .bs-form-title { font-size: 1.3rem; margin: 0 0 22px; }
 .bs-form-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; margin-top: 26px; }
 .bs-form-foot .field-help { margin: 0; }
+/* Sell form: simpler card; optional details tucked away */
+/* Sell: offer form and "Before you sell" side by side */
+.bs-sell-grid { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: clamp(20px, 2.6vw, 32px); align-items: start; margin-top: clamp(20px, 3vw, 32px); }
+.bs-sell-grid .bs-form-wrap { margin-top: 0; }
+.bs-sell-grid .bs-ready { margin-top: 0; position: sticky; top: 96px; }
+.bs-sell-grid .bs-checklist { grid-template-columns: 1fr; gap: 8px; }
+.bs-sell-grid .bs-checklist label { padding-block: 10px; }
+@media (max-width: 899px) { .bs-sell-grid { grid-template-columns: 1fr; } .bs-sell-grid .bs-ready { position: static; } }
+#offer .bs-form { padding: clamp(22px, 3vw, 32px); box-shadow: 0 24px 50px -44px rgba(41,170,225,.6); }
+#offer .bs-form-title { margin-bottom: 16px; }
+#offer .form-grid { row-gap: 18px; }
+#offer .chip label { min-height: 38px; padding: 6px 14px; font-size: .95rem; }
+.bs-more { margin-top: 0; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.bs-more-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 20px; margin-top: 14px; }
+.bs-more-grid .full { grid-column: 1 / -1; }
+.bs-more-grid legend, .bs-more-grid label:not(.chip label) { font-size: .92rem; }
+.bs-more textarea { min-height: 70px; }
+@media (max-width: 599px) { .bs-more-grid { grid-template-columns: 1fr; } }
 .bs-done { text-align: center; display: grid; justify-items: center; gap: 6px; }
 .bs-done:focus { outline: none; }
 .bs-done h3 { margin: 6px 0 0; }
@@ -2140,6 +2177,8 @@ fieldset.field legend { display: block; padding: 0; font-weight: 700; margin-bot
 .hero { min-height: 0; padding-block: clamp(28px, 3.4vw, 44px) clamp(28px, 3.4vw, 40px); }
 .hero .open-status { margin-bottom: 14px; }
 .hero h1 { font-size: clamp(2.1rem, 1.2rem + 2.6vw, 3.3rem); margin-bottom: 16px; }
+/* longer headline ("Broken phone? Fixed in about 15 minutes in Auburn, AL"): three lines on desktop */
+@media (min-width: 1024px) { .hero h1 { font-size: clamp(2.3rem, 1rem + 2.1vw, 2.85rem); max-width: 20ch; } }
 .hero .lead { margin-bottom: 18px; max-width: 52ch; }
 .hero .btn-row { margin-bottom: 0; }
 .dock { margin-top: clamp(24px, 3vw, 36px); }
@@ -2600,6 +2639,11 @@ fieldset.field legend { display: block; padding: 0; font-weight: 700; margin-bot
 .page-hero.is-compact .crumbs { margin-bottom: 10px; }
 .page-hero.is-compact .lead { font-size: 1rem; }
 .page-hero.is-compact + .section { padding-top: clamp(22px, 3vw, 36px); }
+/* compact heroes: headline on one line where it fits, tighter buttons and checkmarks */
+.page-hero.is-compact h1 { max-width: 30ch; }
+.page-hero.is-compact .lead { max-width: 68ch; }
+.page-hero.is-compact .btn-row { margin-top: 18px; }
+.page-hero.is-compact .trust { margin-top: 14px; }
 .bk-step { padding-bottom: 20px; }
 .bk-step + .bk-step { padding-top: 20px; }
 .bk-step > legend { margin-bottom: 10px; }

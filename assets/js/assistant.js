@@ -159,6 +159,7 @@
     if (p && p.from != null) {
       var range = p.to && p.to !== p.from ? money(p.from) + "–" + money(p.to) : money(p.from);
       html = "<b>" + esc(name) + " " + esc(repairName) + "</b>: estimated <b>" + range + "</b>." + esc(partNote) +
+        (P.repairTime && P.repairTime(ctx.device, ctx.repair) ? " Typical time: " + esc(P.repairTime(ctx.device, ctx.repair)) + "." : "") +
         " We confirm your exact price before we start, and it comes with a 90-day technical warranty.";
     } else {
       html = "We don't have a listed estimate for <b>" + esc(name) + " " + esc(repairName) + "</b> yet, but quotes are free. Send the details and we'll get back to you with a price.";
@@ -180,6 +181,11 @@
 
     // a clear repair question ("iPhone 15 screen", "where can I fix my ps5 hdmi") goes straight to the price
     var aboutSelling = has(t, /sell|trade in|tradein|cash for|buy my/);
+    var aboutTime = has(t, /how long|how fast|turnaround|minutes|same day/) && !has(t, /price|cost|how much/);
+    if (rep && ctx.device && P && aboutTime && P.repairTime) {
+      var tm0 = P.repairTime(ctx.device, ctx.repair);
+      return { html: tm0 ? "That repair usually takes <b>" + esc(tm0.replace(/^Over/, "over")) + "</b>. We'll confirm the time before we start." : "We'll tell you the time for that repair up front, before we start.", links: [quoteLink("Get a free quote"), quoteLink("Book a time", "appointment.html")] };
+    }
     if (rep && ctx.device && P && !aboutSelling) return priceAnswer();
 
     // topics that are not about a specific repair
@@ -201,7 +207,11 @@
     if (has(t, /warranty|guarantee/))
       return { html: "Repairs come with a <b>90-day technical warranty</b>. Phones we sell come with a 30-day technical warranty.", chips: ["Check a price", "Are you open?"] };
     if (has(t, /how long|wait|same day|how fast|turnaround|minutes|today/) && !has(t, /price|cost|how much/))
-      return { html: "Most phone repairs are done the <b>same day, usually in about 30 minutes</b>. For tablets, laptops and consoles we tell you the time up front.", links: [{ label: "Book a time", href: "appointment.html" }, { label: "Get a free quote", href: "book.html" }] };
+      return { html: (function () {
+        var tm = P && P.repairTime && ctx.device && ctx.repair ? P.repairTime(ctx.device, ctx.repair) : "";
+        if (tm) return "That repair usually takes <b>" + esc(tm.replace(/^Over/, "over")) + "</b>. We'll confirm the time before we start.";
+        return "Phone screens usually take <b>10–15 minutes</b> and batteries <b>15–25 minutes</b>. Cameras take about 35–55 minutes, and charging ports and back glass over an hour. Water damage, tablets, laptops and consoles usually take 1–2 days, and some are done the same day.";
+      })(), links: [{ label: "Book a time", href: "appointment.html" }, { label: "Get a free quote", href: "book.html" }] };
     if (has(t, /appointment| book | booking |schedule|reserve|walk in|walkin/))
       return { html: "No appointment needed, walk-ins are welcome. If you'd like to pick a time, you can book one online.", links: [{ label: "Make an appointment", href: "appointment.html" }, { label: "Get directions", href: DIRECTIONS, ext: true }] };
     if (has(t, /genuine|original|aftermarket|oem|oled vs|lcd vs|difference|which part|quality/))
