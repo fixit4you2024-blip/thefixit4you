@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&amp;family=Orbitron:wght@500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611121911">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611131307">
   <meta property="og:site_name" content="Fixit4U">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
@@ -113,17 +113,14 @@
       <div class="holo-floor" aria-hidden="true"></div>
       <div class="holo-particles" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div class="hero-media holo-media">
-        <svg class="holo" viewBox="0 0 600 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Animated hologram of a smartphone being scanned inside rotating rings">
+        <svg class="holo" viewBox="110 110 380 380" preserveAspectRatio="xMidYMid meet" role="img" aria-label="A cracked phone screen being repaired, then showing the Fixit4U lock screen">
           <defs>
             <radialGradient id="hg-core" cx="50%" cy="50%" r="50%">
               <stop offset="0" stop-color="#29aae1" stop-opacity=".38"/>
               <stop offset=".55" stop-color="#29aae1" stop-opacity=".08"/>
               <stop offset="1" stop-color="#29aae1" stop-opacity="0"/>
             </radialGradient>
-            <radialGradient id="hg-gold" cx="50%" cy="50%" r="50%">
-              <stop offset="0" stop-color="#fcb040" stop-opacity=".3"/>
-              <stop offset="1" stop-color="#fcb040" stop-opacity="0"/>
-            </radialGradient>
+            <mask id="hg-heal" maskUnits="userSpaceOnUse" x="220" y="140" width="160" height="320"><rect class="h-heal" x="232" y="158" width="136" height="284" fill="#fff"/></mask>
             <linearGradient id="hg-beam" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#5cc4ee" stop-opacity="0"/>
               <stop offset=".85" stop-color="#5cc4ee" stop-opacity=".35"/>
@@ -138,53 +135,44 @@
             <filter id="hg-glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
           </defs>
 
-          <circle cx="300" cy="300" r="290" fill="url(#hg-core)"/>
-          <circle cx="380" cy="420" r="160" fill="url(#hg-gold)" class="h-breathe"/>
-
-          <!-- rings -->
-          <g class="h-ring h-r1"><circle cx="300" cy="300" r="268" fill="none" stroke="#29aae1" stroke-opacity=".25" stroke-dasharray="2 10"/></g>
-          <g class="h-ring h-r2"><circle cx="300" cy="300" r="240" fill="none" stroke="#5cc4ee" stroke-opacity=".18" stroke-width="10" stroke-dasharray="1 7"/></g>
-          <g class="h-ring h-r3"><circle cx="300" cy="300" r="214" fill="none" stroke="#fcb040" stroke-opacity=".6" stroke-width="2" stroke-dasharray="70 26 160 40 20 30" filter="url(#hg-glow)"/></g>
-          <g class="h-ring h-r4"><circle cx="300" cy="300" r="186" fill="none" stroke="#29aae1" stroke-opacity=".7" stroke-width="2.5" stroke-dasharray="300 50 90 60" filter="url(#hg-glow)"/></g>
-          <!-- orbiters -->
-          <g class="h-ring h-o1"><circle cx="300" cy="32" r="5" fill="#5cc4ee" filter="url(#hg-glow)"/></g>
-          <g class="h-ring h-o2"><circle cx="300" cy="86" r="4" fill="#fcb040" filter="url(#hg-glow)"/></g>
-          <g class="h-ring h-o3"><circle cx="300" cy="114" r="3" fill="#ffffff" filter="url(#hg-glow)"/></g>
+          <circle cx="300" cy="300" r="188" fill="url(#hg-core)" opacity=".5"/>
 
           <!-- wireframe phone -->
           <g class="h-phone">
             <rect x="226" y="152" width="148" height="296" rx="32" fill="none" stroke="#5cc4ee" stroke-width="2.5" filter="url(#hg-glow)"/>
+            <rect x="232" y="158" width="136" height="284" rx="26" fill="#020d15"/>
             <rect x="232" y="158" width="136" height="284" rx="26" fill="url(#hg-screen)" stroke="#29aae1" stroke-opacity=".5"/>
-            <rect x="282" y="168" width="36" height="10" rx="5" fill="#000" stroke="#5cc4ee" stroke-opacity=".7"/>
             <path d="M223 220v26M223 256v26M377 236v40" stroke="#5cc4ee" stroke-width="3" stroke-linecap="round"/>
-            <g clip-path="url(#hg-clip)" fill="none" stroke="#5cc4ee" stroke-opacity=".45" stroke-width="1.2">
-              <rect x="246" y="196" width="108" height="64" rx="8"/>
-              <rect x="256" y="206" width="30" height="26" rx="3"/><rect x="294" y="206" width="20" height="14" rx="2"/><rect x="320" y="206" width="24" height="20" rx="2"/>
-              <rect x="252" y="276" width="96" height="140" rx="10" stroke="#fcb040" stroke-opacity=".55"/>
-              <path d="M266 300h68M266 316h50" stroke="#fcb040" stroke-opacity=".5"/>
-              <circle cx="300" cy="348" r="18" stroke-opacity=".35"/>
-              <rect class="h-beam" x="232" y="100" width="136" height="60" fill="url(#hg-beam)" stroke="none"/>
+            <g clip-path="url(#hg-clip)">
+              <!-- lock screen: date, live Auburn time, open status, logo -->
+              <g class="h-lock">
+                <text class="h-date" x="300" y="214" text-anchor="middle" data-ph-date>THURSDAY</text>
+                <text class="h-clock" x="300" y="256" text-anchor="middle" data-ph-time>9:41</text>
+                <g class="h-open">
+                  <circle cx="254" cy="276" r="3" data-ph-dot fill="#3ddc84"/>
+                  <text x="305" y="279" text-anchor="middle" data-ph-status>Open now · until 7 PM</text>
+                </g>
+                <image href="assets/img/wordmark.png" x="258" y="384" width="84" height="19.4"/>
+                <rect x="276" y="428" width="48" height="3" rx="1.5" fill="#5cc4ee" fill-opacity=".45"/>
+              </g>
+              <!-- cracked glass, erased top-to-bottom by the repair beam -->
+              <g class="h-crack" mask="url(#hg-heal)" fill="none" stroke="#cfefff" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M318 304 286 262 270 214 262 176M318 304 348 268 360 236M318 304 368 300M318 304 352 344 366 372M318 304 300 352 296 404 290 442M318 304 270 322 236 330M318 304 254 280 232 266" stroke-width="1.4" stroke-opacity=".9"/>
+                <path d="M286 262 262 268M270 214 290 202M348 268 336 250M352 344 334 360M300 352 278 364M270 322 262 346M254 280 252 300M296 404 316 414" stroke-width="1" stroke-opacity=".6"/>
+                <circle cx="318" cy="304" r="7" stroke-width="1.2" stroke-opacity=".8"/>
+                <circle cx="318" cy="304" r="14" stroke-width=".8" stroke-opacity=".35"/>
+              </g>
+              <rect class="h-beam" x="232" y="98" width="136" height="60" fill="url(#hg-beam)"/>
+              <!-- repaired badge -->
+              <g class="h-fixed">
+                <rect x="262" y="314" width="76" height="26" rx="13" fill="#062016" stroke="#3ddc84" stroke-opacity=".7"/>
+                <path d="M276 327l5 5 9-10" fill="none" stroke="#3ddc84" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="296" y="331.5" class="h-fixed-t">Fixed</text>
+              </g>
             </g>
-            <!-- corner brackets -->
-            <path d="M206 144v-18h18M394 144v-18h-18M206 456v18h18M394 456v18h-18" fill="none" stroke="#fcb040" stroke-width="2.5" stroke-linecap="round" class="h-brackets"/>
-          </g>
-
-          <!-- data ticks -->
-          <g class="h-ticks" fill="#5cc4ee">
-            <rect x="60" y="292" width="40" height="3" rx="1.5"/><rect x="60" y="302" width="26" height="3" rx="1.5" fill="#fcb040"/>
-            <rect x="500" y="292" width="40" height="3" rx="1.5"/><rect x="514" y="302" width="26" height="3" rx="1.5" fill="#fcb040"/>
+            <rect x="282" y="168" width="36" height="10" rx="5" fill="#000" stroke="#5cc4ee" stroke-opacity=".7"/>
           </g>
         </svg>
-        <div class="hud" data-hud aria-hidden="true">
-          <div class="hud-top"><span class="hud-live"></span><span>Device check</span><b class="hud-total"><i data-hud-bar></i></b><span class="hud-pct" data-hud-pct>0%</span></div>
-          <ul>
-            <li><span>Display</span><b><i></i></b><em>Queued</em></li>
-            <li><span>Battery</span><b><i></i></b><em>Queued</em></li>
-            <li><span>Charging port</span><b><i></i></b><em>Queued</em></li>
-            <li><span>Cameras</span><b><i></i></b><em>Queued</em></li>
-            <li><span>Speakers</span><b><i></i></b><em>Queued</em></li>
-          </ul>
-        </div>
       </div>
       <div class="wrap">
         <div class="hero-copy">
@@ -544,15 +532,15 @@
     <a class="btn btn-ghost" href="tel:+13348490404">Call now</a>
     <a class="btn btn-primary" href="book.html">Free quote</a>
   </nav>
-  <script src="assets/js/fx.js?v=202611121911" defer></script>
-  <script src="assets/js/analytics.js?v=202611121911" defer></script>
-  <script src="assets/js/assistant.js?v=202611121911" defer></script>
+  <script src="assets/js/fx.js?v=202611131307" defer></script>
+  <script src="assets/js/analytics.js?v=202611131307" defer></script>
+  <script src="assets/js/assistant.js?v=202611131307" defer></script>
 
-  <script src="assets/js/config.js?v=202611121911"></script>
-  <script src="assets/js/pricing-data.js?v=202611121911"></script>
-  <script src="assets/js/main.js?v=202611121911"></script>
-  <script src="assets/js/home.js?v=202611121911"></script>
-  <script src="assets/js/reviews.js?v=202611121911"></script>
-  <script src="assets/js/callback.js?v=202611121911"></script>
+  <script src="assets/js/config.js?v=202611131307"></script>
+  <script src="assets/js/pricing-data.js?v=202611131307"></script>
+  <script src="assets/js/main.js?v=202611131307"></script>
+  <script src="assets/js/home.js?v=202611131307"></script>
+  <script src="assets/js/reviews.js?v=202611131307"></script>
+  <script src="assets/js/callback.js?v=202611131307"></script>
 </body>
 </html>

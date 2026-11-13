@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&amp;family=Orbitron:wght@500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611121911">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611131307">
   <meta property="og:site_name" content="Fixit4U">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
@@ -75,7 +75,7 @@
   </header>
 
   <main id="main">
-    <section class="page-hero">
+    <section class="page-hero is-compact">
       <div class="wrap">
         <p class="crumbs"><a href="index.html">Home</a> / Services</p>
         <h1>Repair services in <span class="accent">Auburn, AL</span></h1>
@@ -95,8 +95,12 @@
       </div>
     </section>
 
-    <section class="section bg-mist svc-section" aria-label="All repair services">
+    <section class="section svc-section" aria-labelledby="svc-all-title">
       <div class="wrap">
+        <div class="section-head">
+          <h2 id="svc-all-title">What we fix</h2>
+          <p>Pick a repair to see its estimated price. Your exact price is confirmed before we start.</p>
+        </div>
         <div class="svc-finder" role="search">
           <div class="svc-search">
             <label for="svc-q" class="visually-hidden">Search repairs</label>
@@ -127,184 +131,41 @@
           </div>
         </div>
 
-        <div class="svc-group" id="phones" data-svc-group style="--tint: 41,170,225">
-          <h2>Phone repairs</h2>
-          <ul class="svc-cards">
-            <li class="svc-card" id="iphone" data-cat="phone" data-k="iphone repair screens, batteries, ports, cameras and back glass. apple ios iphone 17 16 15 14 13 12 11 se screen battery">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
-              <a class="svc-corner" href="pricing.html?device=iphone">Quote</a>
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="iphone-repair.html">iPhone repair</a></h3>
-                <p>Screens, batteries, ports, cameras and back glass.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Same day</li><li>About 30 min</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Details</span>
-              </div>
-            </li>
-            <li class="svc-card" id="samsung" data-cat="phone" data-k="samsung repair galaxy s, a, note, z fold and z flip. galaxy android s25 s24 s23 s22 s21 fold flip a-series note screen battery charging port camera back glass">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/><circle cx="12" cy="5.5" r=".8"/></svg></span>
-              <a class="svc-corner" href="pricing.html?device=samsung">Quote</a>
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="samsung-repair.html">Samsung repair</a></h3>
-                <p>Galaxy S, A, Note, Z Fold and Z Flip.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Same day</li><li>About 30 min</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Details</span>
-              </div>
-            </li>
-            <li class="svc-card" id="other-phones" data-cat="phone" data-k="other smartphones google pixel, motorola, oneplus and more. pixel google motorola moto oneplus lg tcl android screen battery charging">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="9" height="17" rx="2"/><rect x="12" y="2" width="9" height="17" rx="2"/><path d="M7 17h1M16 15h1"/></svg></span>
-              
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="pricing.html?device=phone-other">Other smartphones</a></h3>
-                <p>Google Pixel, Motorola, OnePlus and more.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Same day</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Free quote</span>
-              </div>
-            </li>
-            <li class="svc-card" id="unlocking" data-cat="phone" data-k="phone unlocking switch carriers or use a different sim. unlock carrier sim network">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg></span>
-              
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="book.html?repair=unlock">Phone unlocking</a></h3>
-                <p>Switch carriers or use a different SIM.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Free quote</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Request a quote</span>
-              </div>
-            </li>
+        <div class="svc-group" id="phones" data-svc-group>
+          <h2>Phones</h2>
+          <ul class="svc-repairs">
+            <li class="svc-card" id="iphone" data-cat="phone" data-k="iphone repair screens, batteries, charging ports, cameras and back glass for every iphone. apple ios iphone 17 16 15 14 13 12 11 se screen battery"><a class="svc-repair" href="pricing.html?device=iphone"><h3>iPhone repair</h3><p>Screens, batteries, charging ports, cameras and back glass for every iPhone.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="samsung" data-cat="phone" data-k="samsung repair galaxy s, a-series, note, z fold and z flip screens, batteries and more. galaxy android s25 s24 s23 s22 s21 fold flip a-series note screen battery charging port camera back glass"><a class="svc-repair" href="pricing.html?device=samsung"><h3>Samsung repair</h3><p>Galaxy S, A-series, Note, Z Fold and Z Flip screens, batteries and more.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="other-phones" data-cat="phone" data-k="other smartphones google pixel, motorola, oneplus and other android phones. pixel google motorola moto oneplus lg tcl android screen battery charging"><a class="svc-repair" href="pricing.html?device=phone-other"><h3>Other smartphones</h3><p>Google Pixel, Motorola, OnePlus and other Android phones.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="unlocking" data-cat="phone" data-k="phone unlocking switch carriers or use a different sim card. unlock carrier sim network"><a class="svc-repair" href="pricing.html?repair=unlock"><h3>Phone unlocking</h3><p>Switch carriers or use a different SIM card.</p><span class="svc-go">See prices</span></a></li>
           </ul>
         </div>
-        <div class="svc-group" id="common" data-svc-group style="--tint: 252,176,64">
+        <div class="svc-group" id="common" data-svc-group>
           <h2>Common repairs</h2>
-          <ul class="svc-cards">
-            <li class="svc-card" id="screen" data-cat="phone tablet laptop watch" data-k="screen replacement cracked glass, black screen, lines or dead touch. cracked broken shattered display lcd oled glass touch">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="m9.5 6 3 3.5-2 3 4 4"/></svg></span>
-              <a class="svc-corner" href="pricing.html?repair=screen">Quote</a>
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="screen-replacement.html">Screen replacement</a></h3>
-                <p>Cracked glass, black screen, lines or dead touch.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Same day</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Details</span>
-              </div>
-            </li>
-            <li class="svc-card" id="battery" data-cat="phone tablet laptop watch" data-k="battery replacement fast drain, shutdowns or a swollen battery. battery dies drain swollen charge health">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></span>
-              
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="pricing.html?repair=battery">Battery replacement</a></h3>
-                <p>Fast drain, shutdowns or a swollen battery.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Same day</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Free quote</span>
-              </div>
-            </li>
-            <li class="svc-card" id="charging-port" data-cat="phone tablet laptop" data-k="charging port loose cable, slow or no charging. charging port usb-c lightning not charging cable">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span>
-              
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="pricing.html?repair=charging-port">Charging port</a></h3>
-                <p>Loose cable, slow or no charging.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Same day</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Free quote</span>
-              </div>
-            </li>
-            <li class="svc-card" id="camera" data-cat="phone tablet" data-k="camera repair blurry photos, cracked lens or no camera. camera lens blurry focus photo">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h3l2-3h6l2 3h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="4"/></svg></span>
-              
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="pricing.html?repair=camera">Camera repair</a></h3>
-                <p>Blurry photos, cracked lens or no camera.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Same day</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Free quote</span>
-              </div>
-            </li>
+          <ul class="svc-repairs">
+            <li class="svc-card" id="screen" data-cat="phone tablet laptop watch" data-k="screen replacement cracked glass, black screen, lines or touch that stopped responding. cracked broken shattered display lcd oled glass touch"><a class="svc-repair" href="pricing.html?repair=screen"><h3>Screen replacement</h3><p>Cracked glass, black screen, lines or touch that stopped responding.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="battery" data-cat="phone tablet laptop watch" data-k="battery replacement fast drain, random shutdowns or a battery that has started to swell. battery dies drain swollen charge health"><a class="svc-repair" href="pricing.html?repair=battery"><h3>Battery replacement</h3><p>Fast drain, random shutdowns or a battery that has started to swell.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="charging-port" data-cat="phone tablet laptop" data-k="charging port loose cable, slow charging or no charging at all. charging port usb-c lightning not charging cable"><a class="svc-repair" href="pricing.html?repair=charging-port"><h3>Charging port</h3><p>Loose cable, slow charging or no charging at all.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="camera" data-cat="phone tablet" data-k="camera repair blurry photos, cracked lens or a camera that won't focus. camera lens blurry focus photo"><a class="svc-repair" href="pricing.html?repair=camera"><h3>Camera repair</h3><p>Blurry photos, cracked lens or a camera that won't focus.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="back-glass" data-cat="phone" data-k="back glass shattered back panel replaced with clean new glass. back glass rear cover panel cracked back"><a class="svc-repair" href="pricing.html?repair=back-glass"><h3>Back glass</h3><p>Shattered back panel replaced with clean new glass.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="water-damage" data-cat="phone tablet laptop" data-k="water damage dropped it in water? bring it in as soon as you can. water wet liquid spill dropped pool corrosion"><a class="svc-repair" href="pricing.html?repair=water"><h3>Water damage</h3><p>Dropped it in water? Bring it in as soon as you can.</p><span class="svc-go">See prices</span></a></li>
           </ul>
         </div>
-        <div class="svc-group" id="more" data-svc-group style="--tint: 138,148,255">
+        <div class="svc-group" id="more" data-svc-group>
           <h2>Tablets, laptops and more</h2>
-          <ul class="svc-cards">
-            <li class="svc-card" id="tablet" data-cat="tablet" data-k="ipad and tablet repair ipad, galaxy tab, amazon fire and more. ipad pro air mini galaxy tab amazon fire tablet">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
-              <a class="svc-corner" href="pricing.html?device=tablet">Quote</a>
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="ipad-tablet-repair.html">iPad and tablet repair</a></h3>
-                <p>iPad, Galaxy Tab, Amazon Fire and more.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Time given up front</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Details</span>
-              </div>
-            </li>
-            <li class="svc-card" id="laptop" data-cat="laptop" data-k="laptop repair macbook, windows laptops and chromebooks. macbook mac windows chromebook keyboard boot slow laptop">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H4z"/><path d="M2 19h20"/></svg></span>
-              <a class="svc-corner" href="pricing.html?device=laptop">Quote</a>
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="laptop-repair.html">Laptop repair</a></h3>
-                <p>MacBook, Windows laptops and Chromebooks.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Time given up front</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Details</span>
-              </div>
-            </li>
-            <li class="svc-card" id="console" data-cat="console" data-k="game console repair playstation, xbox and nintendo switch. playstation ps5 ps4 xbox nintendo switch hdmi controller joy-con">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/><path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59l-.6 5.4A2.6 2.6 0 0 0 4.7 17c.9 0 1.73-.45 2.2-1.2l.8-1.3h8.6l.8 1.3a2.6 2.6 0 0 0 4.8-1.4l-.6-5.4A4 4 0 0 0 17.32 5z"/></svg></span>
-              <a class="svc-corner" href="pricing.html?device=console">Quote</a>
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="game-console-repair.html">Game console repair</a></h3>
-                <p>PlayStation, Xbox and Nintendo Switch.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Time given up front</li><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Details</span>
-              </div>
-            </li>
-            <li class="svc-card" id="smartwatch" data-cat="watch" data-k="smartwatch repair apple watch and galaxy watch screens and batteries. apple watch galaxy watch smartwatch">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="6"/><path d="M12 10v2l1 1"/><path d="m16.13 7.66-.81-4.05a2 2 0 0 0-2-1.61h-2.68a2 2 0 0 0-2 1.61l-.78 4.05M7.88 16.36l.8 4a2 2 0 0 0 2 1.61h2.72a2 2 0 0 0 2-1.61l.81-4.05"/></svg></span>
-              
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="pricing.html?device=watch">Smartwatch repair</a></h3>
-                <p>Apple Watch and Galaxy Watch screens and batteries.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>90-day warranty</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Free quote</span>
-              </div>
-            </li>
+          <ul class="svc-repairs">
+            <li class="svc-card" id="tablet" data-cat="tablet" data-k="ipad and tablet repair ipad, galaxy tab, amazon fire and more. ipad pro air mini galaxy tab amazon fire tablet"><a class="svc-repair" href="pricing.html?device=tablet"><h3>iPad and tablet repair</h3><p>iPad, Galaxy Tab, Amazon Fire and more.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="laptop" data-cat="laptop" data-k="laptop repair macbook, windows laptops and chromebooks: screens, batteries and keyboards. macbook mac windows chromebook keyboard boot slow laptop"><a class="svc-repair" href="pricing.html?device=laptop"><h3>Laptop repair</h3><p>MacBook, Windows laptops and Chromebooks: screens, batteries and keyboards.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="console" data-cat="console" data-k="game console repair playstation, xbox and nintendo switch: hdmi ports, power and controllers. playstation ps5 ps4 xbox nintendo switch hdmi controller joy-con"><a class="svc-repair" href="pricing.html?device=console"><h3>Game console repair</h3><p>PlayStation, Xbox and Nintendo Switch: HDMI ports, power and controllers.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="smartwatch" data-cat="watch" data-k="smartwatch repair apple watch and galaxy watch screens and batteries. apple watch galaxy watch smartwatch"><a class="svc-repair" href="pricing.html?device=watch"><h3>Smartwatch repair</h3><p>Apple Watch and Galaxy Watch screens and batteries.</p><span class="svc-go">See prices</span></a></li>
           </ul>
         </div>
-        <div class="svc-group" id="more-services" data-svc-group style="--tint: 45,212,191">
+        <div class="svc-group" id="more-services" data-svc-group>
           <h2>Other services</h2>
-          <ul class="svc-cards">
-            <li class="svc-card" id="water-damage" data-cat="phone tablet laptop" data-k="water damage spills and drops, checked and cleaned. water wet liquid spill dropped pool corrosion">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7S6 9.5 6 14a6 6 0 0 0 12 0c0-4.5-6-11.3-6-11.3z"/></svg></span>
-              
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="pricing.html?repair=water">Water damage</a></h3>
-                <p>Spills and drops, checked and cleaned.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Time given up front</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Free quote</span>
-              </div>
-            </li>
-            <li class="svc-card" id="data-transfer" data-cat="phone" data-k="data transfer move photos, contacts and messages to a new phone. data transfer backup photos contacts new phone move">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3 4 7l4 4M4 7h16M16 21l4-4-4-4M20 17H4"/></svg></span>
-              
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="book.html?repair=data-transfer">Data transfer</a></h3>
-                <p>Move photos, contacts and messages to a new phone.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Old phone to new</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Request a quote</span>
-              </div>
-            </li>
-            <li class="svc-card" id="buy-sell" data-cat="phone" data-k="buy and sell phones get cash or zelle for your old device, or find a phone. sell buy trade trade-in used refurbished phone cash zelle offer accessories cases">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-              <a class="svc-corner" href="buy-sell.html#offer">Offer</a>
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="buy-sell.html">Buy and sell phones</a></h3>
-                <p>Get cash or Zelle for your old device, or find a phone.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Cash or Zelle</li><li>Trade-in</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Buy &amp; Sell</span>
-              </div>
-            </li>
-            <li class="svc-card" id="other-electronics" data-cat="other" data-k="other electronics something else? describe it and we'll tell you. other electronics device gadget">
-              <span class="svc-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span>
-              
-              <div class="svc-card-body">
-                <h3><a class="svc-card-link" href="book.html?device=other">Other electronics</a></h3>
-                <p>Something else? Describe it and we'll tell you.</p>
-                <ul class="svc-tags" aria-label="Quick facts"><li>Free quote</li></ul>
-                <span class="svc-card-cta" aria-hidden="true">Request a quote</span>
-              </div>
-            </li>
+          <ul class="svc-repairs">
+            <li class="svc-card" id="data-transfer" data-cat="phone" data-k="data transfer move photos, contacts and messages to your new phone. data transfer backup photos contacts new phone move"><a class="svc-repair" href="pricing.html?repair=data-transfer"><h3>Data transfer</h3><p>Move photos, contacts and messages to your new phone.</p><span class="svc-go">See prices</span></a></li>
+            <li class="svc-card" id="buy-sell" data-cat="phone" data-k="buy and sell phones get cash or zelle for your old device, or find your next phone. sell buy trade trade-in used refurbished phone cash zelle offer accessories cases"><a class="svc-repair" href="buy-sell.html"><h3>Buy and sell phones</h3><p>Get cash or Zelle for your old device, or find your next phone.</p><span class="svc-go">Buy &amp; Sell</span></a></li>
+            <li class="svc-card" id="other-electronics" data-cat="other" data-k="other electronics something else? tell us what it is and we'll give you a price. other electronics device gadget"><a class="svc-repair" href="pricing.html?device=other"><h3>Other electronics</h3><p>Something else? Tell us what it is and we'll give you a price.</p><span class="svc-go">See prices</span></a></li>
           </ul>
         </div>
 
@@ -436,13 +297,13 @@
     <a class="btn btn-ghost" href="tel:+13348490404">Call now</a>
     <a class="btn btn-primary" href="book.html">Free quote</a>
   </nav>
-  <script src="assets/js/fx.js?v=202611121911" defer></script>
-  <script src="assets/js/analytics.js?v=202611121911" defer></script>
-  <script src="assets/js/assistant.js?v=202611121911" defer></script>
+  <script src="assets/js/fx.js?v=202611131307" defer></script>
+  <script src="assets/js/analytics.js?v=202611131307" defer></script>
+  <script src="assets/js/assistant.js?v=202611131307" defer></script>
 
-  <script src="assets/js/config.js?v=202611121911"></script>
-  <script src="assets/js/main.js?v=202611121911"></script>
-  <script src="assets/js/reviews.js?v=202611121911"></script>
-  <script src="assets/js/services.js?v=202611121911"></script>
+  <script src="assets/js/config.js?v=202611131307"></script>
+  <script src="assets/js/main.js?v=202611131307"></script>
+  <script src="assets/js/reviews.js?v=202611131307"></script>
+  <script src="assets/js/services.js?v=202611131307"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&amp;family=Orbitron:wght@500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611121911">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611131307">
   <meta property="og:site_name" content="Fixit4U">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
@@ -89,7 +89,7 @@
   </header>
 
   <main id="main">
-    <section class="page-hero">
+    <section class="page-hero is-compact">
       <div class="wrap">
         <p class="crumbs"><a href="index.html">Home</a> / Buy &amp; Sell</p>
         <h1>Buy and sell phones in <span class="accent">Auburn</span></h1>
@@ -122,36 +122,8 @@
             <h2>Sell your device</h2>
             <p>Phones, tablets, laptops, consoles and watches. Cracked, locked or dead is fine. Tell us what you have and we'll call you with an offer.</p>
           </div>
-          <ol class="journey" data-steps style="--n:3">
-            <li class="j-step" style="--i:0">
-              <span class="j-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M10 18h4"/></svg>
-                <b>1</b>
-              </span>
-              <h3>Tell us about it</h3>
-              <p>The model, storage and condition. Most of it is a tap.</p>
-              <span class="j-chip">Takes a minute</span>
-            </li>
-            <li class="j-step" style="--i:1">
-              <span class="j-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41 13.42 20.58a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><path d="M7 7h.01"/></svg>
-                <b>2</b>
-              </span>
-              <h3>Get an offer</h3>
-              <p>We call you with what we can pay for it.</p>
-              <span class="j-chip">Free, no obligation</span>
-            </li>
-            <li class="j-step" style="--i:2">
-              <span class="j-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg>
-                <b>3</b>
-              </span>
-              <h3>Bring it in, get paid</h3>
-              <p>Bring the device and a photo ID. Get cash, Zelle or trade-in credit.</p>
-              <span class="j-chip">Walk-ins welcome</span>
-            </li>
-          </ol>
 
+          <div class="bs-sell-grid">
           <div class="bs-form-wrap" id="offer">
             <form class="form-card bs-form" data-lead data-subject="Sell offer request" novalidate>
               <h3 class="bs-form-title">Get your free offer</h3>
@@ -174,17 +146,6 @@
                   <p class="field-error" id="so-model-err" hidden></p>
                 </div>
                 <fieldset class="field full">
-                  <legend>Storage <span class="opt">(if you know)</span></legend>
-                  <div class="chips">
-                    <span class="chip"><input type="radio" name="storage" id="so-s1" value="64 GB"><label for="so-s1">64 GB</label></span>
-                    <span class="chip"><input type="radio" name="storage" id="so-s2" value="128 GB"><label for="so-s2">128 GB</label></span>
-                    <span class="chip"><input type="radio" name="storage" id="so-s3" value="256 GB"><label for="so-s3">256 GB</label></span>
-                    <span class="chip"><input type="radio" name="storage" id="so-s4" value="512 GB"><label for="so-s4">512 GB</label></span>
-                    <span class="chip"><input type="radio" name="storage" id="so-s5" value="1 TB+"><label for="so-s5">1 TB+</label></span>
-                    <span class="chip"><input type="radio" name="storage" id="so-s6" value="Not sure" checked><label for="so-s6">Not sure</label></span>
-                  </div>
-                </fieldset>
-                <fieldset class="field full">
                   <legend>Condition</legend>
                   <div class="chips">
                     <span class="chip"><input type="radio" name="condition" id="so-c1" value="Like new"><label for="so-c1">Like new</label></span>
@@ -193,22 +154,59 @@
                     <span class="chip"><input type="radio" name="condition" id="so-c4" value="Won't turn on"><label for="so-c4">Won't turn on</label></span>
                   </div>
                 </fieldset>
-                <fieldset class="field">
-                  <legend>Carrier</legend>
-                  <div class="chips">
-                    <span class="chip"><input type="radio" name="carrier" id="so-l1" value="Unlocked"><label for="so-l1">Unlocked</label></span>
-                    <span class="chip"><input type="radio" name="carrier" id="so-l2" value="Locked to a carrier"><label for="so-l2">Locked</label></span>
-                    <span class="chip"><input type="radio" name="carrier" id="so-l3" value="Not sure" checked><label for="so-l3">Not sure</label></span>
+                <details class="field full bk-note bs-more">
+                  <summary>Add more details <span class="opt">(optional, for a better offer)</span></summary>
+                  <div class="bs-more-grid">
+                    <fieldset class="field full">
+                      <legend>Storage</legend>
+                      <div class="chips">
+                        <span class="chip"><input type="radio" name="storage" id="so-s1" value="64 GB"><label for="so-s1">64 GB</label></span>
+                        <span class="chip"><input type="radio" name="storage" id="so-s2" value="128 GB"><label for="so-s2">128 GB</label></span>
+                        <span class="chip"><input type="radio" name="storage" id="so-s3" value="256 GB"><label for="so-s3">256 GB</label></span>
+                        <span class="chip"><input type="radio" name="storage" id="so-s4" value="512 GB"><label for="so-s4">512 GB</label></span>
+                        <span class="chip"><input type="radio" name="storage" id="so-s5" value="1 TB+"><label for="so-s5">1 TB+</label></span>
+                      </div>
+                    </fieldset>
+                    <fieldset class="field">
+                      <legend>Carrier</legend>
+                      <div class="chips">
+                        <span class="chip"><input type="radio" name="carrier" id="so-l1" value="Unlocked"><label for="so-l1">Unlocked</label></span>
+                        <span class="chip"><input type="radio" name="carrier" id="so-l2" value="Locked to a carrier"><label for="so-l2">Locked</label></span>
+                      </div>
+                    </fieldset>
+                    <div class="field">
+                      <label for="so-battery">Battery health</label>
+                      <input id="so-battery" name="battery_health" inputmode="numeric" maxlength="12" placeholder="e.g. 86%">
+                    </div>
+                    <div class="field full">
+                      <label for="so-imei">IMEI or serial number</label>
+                      <input id="so-imei" name="imei" inputmode="text" autocomplete="off" maxlength="24" placeholder="15-digit IMEI or serial number" aria-describedby="so-imei-help so-imei-err">
+                      <p class="field-help" id="so-imei-help">On a phone, dial <b>*#06#</b> or go to Settings → About. We use it to check the device isn't reported lost or stolen.</p>
+                      <p class="field-error" id="so-imei-err" hidden></p>
+                    </div>
+                    <fieldset class="field full">
+                      <legend>Comes with</legend>
+                      <div class="chips">
+                        <span class="chip"><input type="checkbox" name="comes_with" id="so-w1" value="Original box"><label for="so-w1">Original box</label></span>
+                        <span class="chip"><input type="checkbox" name="comes_with" id="so-w2" value="Charger"><label for="so-w2">Charger</label></span>
+                        <span class="chip"><input type="checkbox" name="comes_with" id="so-w3" value="Case"><label for="so-w3">Case</label></span>
+                        <span class="chip"><input type="checkbox" name="comes_with" id="so-w4" value="Receipt"><label for="so-w4">Receipt</label></span>
+                      </div>
+                    </fieldset>
+                    <fieldset class="field full">
+                      <legend>How you'd like to be paid</legend>
+                      <div class="chips">
+                        <span class="chip"><input type="radio" name="payout" id="so-p1" value="Cash"><label for="so-p1">Cash</label></span>
+                        <span class="chip"><input type="radio" name="payout" id="so-p2" value="Zelle"><label for="so-p2">Zelle</label></span>
+                        <span class="chip"><input type="radio" name="payout" id="so-p3" value="Trade-in credit"><label for="so-p3">Trade-in</label></span>
+                      </div>
+                    </fieldset>
+                    <div class="field full">
+                      <label for="so-notes">Anything else?</label>
+                      <textarea id="so-notes" name="details" maxlength="1500" placeholder="e.g. color, small scratch on the back, Face ID works, signed out of iCloud"></textarea>
+                    </div>
                   </div>
-                </fieldset>
-                <fieldset class="field">
-                  <legend>How you'd like to be paid</legend>
-                  <div class="chips">
-                    <span class="chip"><input type="radio" name="payout" id="so-p1" value="Cash" checked><label for="so-p1">Cash</label></span>
-                    <span class="chip"><input type="radio" name="payout" id="so-p2" value="Zelle"><label for="so-p2">Zelle</label></span>
-                    <span class="chip"><input type="radio" name="payout" id="so-p3" value="Trade-in credit"><label for="so-p3">Trade-in</label></span>
-                  </div>
-                </fieldset>
+                </details>
                 <div class="field">
                   <label for="so-name">Your name</label>
                   <input id="so-name" name="name" autocomplete="name" aria-describedby="so-name-err" required>
@@ -223,7 +221,7 @@
               <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
               <div class="bs-form-foot">
                 <button class="btn btn-primary" type="submit">Get my offer</button>
-                <p class="field-help">Free and no obligation. Bring a photo ID when you sell.</p>
+                <p class="field-help">Free, no obligation. We'll call you with an offer.</p>
               </div>
               <p class="form-status" data-lead-status role="status" hidden></p>
             </form>
@@ -247,6 +245,7 @@
               <li><label><input type="checkbox"><span><b>Charge it if you can.</b> Won't turn on? Bring it anyway.</span></label></li>
               <li><label><input type="checkbox"><span><b>Bring a photo ID.</b> It's required to sell.</span></label></li>
             </ul>
+          </div>
           </div>
         </div>
 
@@ -427,12 +426,12 @@
     <a class="btn btn-ghost" href="tel:+13348490404">Call now</a>
     <a class="btn btn-primary" href="book.html">Free quote</a>
   </nav>
-  <script src="assets/js/fx.js?v=202611121911" defer></script>
-  <script src="assets/js/analytics.js?v=202611121911" defer></script>
-  <script src="assets/js/assistant.js?v=202611121911" defer></script>
+  <script src="assets/js/fx.js?v=202611131307" defer></script>
+  <script src="assets/js/analytics.js?v=202611131307" defer></script>
+  <script src="assets/js/assistant.js?v=202611131307" defer></script>
 
-  <script src="assets/js/config.js?v=202611121911"></script>
-  <script src="assets/js/main.js?v=202611121911"></script>
-  <script src="assets/js/buy-sell.js?v=202611121911"></script>
+  <script src="assets/js/config.js?v=202611131307"></script>
+  <script src="assets/js/main.js?v=202611131307"></script>
+  <script src="assets/js/buy-sell.js?v=202611131307"></script>
 </body>
 </html>
