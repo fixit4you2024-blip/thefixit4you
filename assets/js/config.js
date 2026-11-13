@@ -40,6 +40,15 @@ window.FIXIT = {
     endpoint: "https://formsubmit.co/ajax/info@thefixit4you.com"
   },
 
+  // Google Analytics: paste your Measurement ID (looks like "G-XXXXXXXXXX").
+  // Leave it empty to turn analytics off. It never runs on a local preview.
+  analyticsId: "G-TRYM8FE10N",
+
+  // "Ask us" chat: email each conversation to the form email above when the
+  // visitor leaves the page (only if they asked at least one question).
+  // Set to false to stop the emails.
+  chatEmail: true,
+
   // Reviews ------------------------------------------------------------
   reviews: {
     // Your Google Business listing

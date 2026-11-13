@@ -248,16 +248,54 @@
     '<form class="fx-chat-form"><label for="fx-chat-in" class="visually-hidden">Ask a question</label>' +
     '<input id="fx-chat-in" autocomplete="off" maxlength="200" placeholder="Ask about prices, hours, discounts…">' +
     '<button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></button></form>' +
-    '<p class="fx-chat-note">Automated assistant · prices are estimates</p>';
+    '<p class="fx-chat-note">Automated assistant · prices are estimates · chats are saved so we can help you. <a href="privacy.html#chat">Privacy</a></p>';
   document.body.appendChild(panel);
   document.body.appendChild(launcher);
 
   var log = panel.querySelector(".fx-chat-log"), input = panel.querySelector("input"), form = panel.querySelector("form");
 
-  function addUser(text) { var b = el("div", "fx-msg is-user", text); log.appendChild(b); scroll(); }
+  /* ---------- Saving the conversation (emailed to the shop when the visitor leaves) ---------- */
+  var talk = [], asked = 0, sentUpTo = 0, sends = 0;
+  function plain(html) { var d = document.createElement("div"); d.innerHTML = String(html).replace(/<br\s*\/?>/gi, " "); return (d.textContent || "").replace(/\s+/g, " ").trim(); }
+  function shopTime() {
+    try { return new Date().toLocaleString("en-US", { timeZone: C.timeZone || "America/Chicago", weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }); }
+    catch (e) { return new Date().toString(); }
+  }
+  function chatPayload() {
+    var first = (talk.find(function (x) { return x.who === "Visitor"; }) || {}).text || "";
+    var data = {
+      _subject: (sends ? "Website chat (continued): " : "Website chat: ") + first.slice(0, 60) + " · " + asked + " question" + (asked === 1 ? "" : "s"),
+      _template: "table", _captcha: "false",
+      "Page": location.pathname.replace(/^\//, "") || "index.html",
+      "Time (Auburn)": shopTime(),
+      "Device": /Mobi|Android|iPhone/i.test(navigator.userAgent) ? "Phone" : (/iPad|Tablet/i.test(navigator.userAgent) ? "Tablet" : "Computer"),
+      "Came from": document.referrer ? document.referrer.replace(/^https?:\/\//, "").slice(0, 80) : "Typed the address / bookmark",
+      "Looking at": [ctx.model || ctx.device || "", ctx.repair ? (P && P.repairs[ctx.repair]) || ctx.repair : ""].filter(Boolean).join(" · ") || "—"
+    };
+    var n = 0;
+    talk.slice(0, 60).forEach(function (x) {
+      if (x.who === "Visitor") n++;
+      if (!n) return; // skip the greeting
+      data[(n < 10 ? "0" : "") + n + (x.who === "Visitor" ? " Visitor" : " Assistant")] = x.text.slice(0, 600);
+    });
+    return data;
+  }
+  function sendChat() {
+    if (C.chatEmail === false || !C.form || !C.form.endpoint || asked === 0 || talk.length === sentUpTo) return;
+    var body = new URLSearchParams(chatPayload());
+    sentUpTo = talk.length; sends++;
+    if (/^(localhost|127\.0\.0\.1|\[::1\]|)$/.test(location.hostname)) { if (window.console) console.debug("[chat email, not sent on preview]", Object.fromEntries(body)); return; }
+    try { fetch(C.form.endpoint, { method: "POST", body: body, keepalive: true, headers: { "Accept": "application/json" } }).catch(function () {}); }
+    catch (e) { if (navigator.sendBeacon) navigator.sendBeacon(C.form.endpoint, body); }
+  }
+  document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") sendChat(); });
+  window.addEventListener("pagehide", sendChat);
+
+  function addUser(text) { var b = el("div", "fx-msg is-user", text); log.appendChild(b); scroll(); talk.push({ who: "Visitor", text: text }); asked++; if (window.fxTrack) fxTrack("chat_question", { page: location.pathname }); }
   function addBot(a) {
     var wrap = el("div", "fx-msg is-bot");
     wrap.innerHTML = a.html;
+    talk.push({ who: "Assistant", text: plain(a.html) + (a.links && a.links.length ? " [" + a.links.map(function (l) { return l.label; }).join(" | ") + "]" : "") });
     if (a.links && a.links.length) {
       var row = el("div", "fx-links");
       a.links.forEach(function (l) {
@@ -302,6 +340,7 @@
       panel.querySelector("[data-chat-status]").textContent = statusLine().replace("We're ", "").replace(". Walk in any time.", "");
       if (!opened) {
         opened = true;
+        if (window.fxTrack) fxTrack("chat_open", { page: location.pathname });
         addBot({ html: "Hi! I'm the Fixit4U assistant. Ask me for an estimated repair price, our hours, directions or discounts.", chips: START });
       }
       setTimeout(function () { input.focus(); }, 50);
@@ -319,5 +358,5 @@
   form.addEventListener("submit", function (e) { e.preventDefault(); var v = input.value; input.value = ""; send(v); });
 
   // expose for testing
-  window.FIXIT_ASSISTANT = { ask: function (q) { return answer(q); }, reset: function () { ctx = { device: null, model: "", repair: null }; }, load: loadPricing };
+  window.FIXIT_ASSISTANT = { ask: function (q) { return answer(q); }, reset: function () { ctx = { device: null, model: "", repair: null }; }, load: loadPricing, chatEmail: chatPayload };
 })();
