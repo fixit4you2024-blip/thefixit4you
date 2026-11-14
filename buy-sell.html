@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&amp;family=Orbitron:wght@500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611131334">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611141656">
   <meta property="og:site_name" content="Fixit4U">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
@@ -112,6 +112,7 @@
     <nav class="bs-tabs" aria-label="Buy and sell sections">
       <a href="#sell" data-bs-tab="sell">Sell</a>
       <a href="#buy" data-bs-tab="buy">Buy</a>
+      <a href="in-stock.html">In stock</a>
       <a href="#bs-faq" data-bs-tab="bs-faq">FAQ</a>
     </nav>
 
@@ -249,10 +250,22 @@
           </div>
         </div>
 
-        <div class="bs-buy" id="buy">
+        <div id="buy" class="buy-block">
+        <div class="section-head">
+          <h2>Buy a phone</h2>
+          <p>New, used and refurbished phones, each with a 30-day technical warranty.</p>
+        </div>
+
+        <a class="bs-stock-link" href="in-stock.html">
+          <span class="bs-choice-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></span>
+          <span class="bs-choice-txt"><b>See what's in stock</b><small>Phones, tablets and laptops for sale now</small></span>
+          <span class="bs-choice-go" aria-hidden="true">→</span>
+        </a>
+
+        <div class="bs-buy">
           <div class="bs-buy-info">
-            <h2>Buy a phone</h2>
-            <p class="lead">New, used and refurbished phones. What we have changes often, so tell us what you want and we'll call you when it's in.</p>
+            <h3 class="bs-buy-title">Looking for a certain phone?</h3>
+            <p class="lead">What we have changes often. Tell us what you want and we'll call you when it's in.</p>
             <ul class="check-list">
               <li>30-day technical warranty on phones we sell</li>
               <li>Trade in your old phone toward it</li>
@@ -318,6 +331,7 @@
               <button class="btn btn-ghost" type="button" data-lead-again>Request another phone</button>
             </div>
           </div>
+        </div>
         </div>
 
         <div class="split" id="accessories">
@@ -408,6 +422,7 @@
         <a href="pricing.html">Prices</a>
         <a href="appointment.html">Appointments</a>
         <a href="buy-sell.html">Buy &amp; Sell</a>
+        <a href="in-stock.html">In stock</a>
         <a href="discounts.html">Discounts</a>
         <a href="about.html">About</a>
         <a href="reviews.html">Reviews</a>
@@ -426,12 +441,12 @@
     <a class="btn btn-ghost" href="tel:+13348490404">Call now</a>
     <a class="btn btn-primary" href="book.html">Free quote</a>
   </nav>
-  <script src="assets/js/fx.js?v=202611131334" defer></script>
-  <script src="assets/js/analytics.js?v=202611131334" defer></script>
-  <script src="assets/js/assistant.js?v=202611131334" defer></script>
+  <script src="assets/js/fx.js?v=202611141656" defer></script>
+  <script src="assets/js/analytics.js?v=202611141656" defer></script>
+  <script src="assets/js/assistant.js?v=202611141656" defer></script>
 
-  <script src="assets/js/config.js?v=202611131334"></script>
-  <script src="assets/js/main.js?v=202611131334"></script>
-  <script src="assets/js/buy-sell.js?v=202611131334"></script>
+  <script src="assets/js/config.js?v=202611141656"></script>
+  <script src="assets/js/main.js?v=202611141656"></script>
+  <script src="assets/js/buy-sell.js?v=202611141656"></script>
 </body>
 </html>
