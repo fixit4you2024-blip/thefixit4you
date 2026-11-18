@@ -138,6 +138,9 @@
   }
   var HUMAN = [{ label: "Call " + PHONE, href: TEL }, { label: "Text us", href: SMS, cls: "ca-text" }, { label: "Get a free quote", href: "book.html" }];
 
+  // screen repair offer (owner confirmed: free or half-price screen protector with any screen repair)
+  var SP_NOTE = "<br><span class=\"fx-offer\">Bonus: a free or half-price screen protector with your screen repair.</span>";
+
   function priceAnswer() {
     var dev = P.devices.find(function (d) { return d.id === ctx.device; });
     var rl = P.repairs[ctx.repair] || "that repair";
@@ -164,6 +167,7 @@
     } else {
       html = "We don't have a listed estimate for <b>" + esc(name) + " " + esc(repairName) + "</b> yet, but quotes are free. Send the details and we'll get back to you with a price.";
     }
+    if (ctx.repair === "screen") html += SP_NOTE;
     return { html: html, links: [quoteLink("Get a free quote"), quoteLink("Book a time", "appointment.html"), HUMAN[0]] };
   }
 
@@ -184,7 +188,7 @@
     var aboutTime = has(t, /how long|how fast|turnaround|minutes|same day/) && !has(t, /price|cost|how much/);
     if (rep && ctx.device && P && aboutTime && P.repairTime) {
       var tm0 = P.repairTime(ctx.device, ctx.repair);
-      return { html: tm0 ? "That repair usually takes <b>" + esc(tm0.replace(/^Over/, "over")) + "</b>. We'll confirm the time before we start." : "We'll tell you the time for that repair up front, before we start.", links: [quoteLink("Get a free quote"), quoteLink("Book a time", "appointment.html")] };
+      return { html: (tm0 ? "That repair usually takes <b>" + esc(tm0.replace(/^Over/, "over")) + "</b>. We'll confirm the time before we start." : "We'll tell you the time for that repair up front, before we start.") + (ctx.repair === "screen" ? SP_NOTE : ""), links: [quoteLink("Get a free quote"), quoteLink("Book a time", "appointment.html")] };
     }
     if (rep && ctx.device && P && !aboutSelling) return priceAnswer();
 
@@ -203,7 +207,7 @@
     if (has(t, /sell|trade in|tradein|trade-in|buy my|cash for|how much (is|for) my (old )?(phone|device)|zelle/))
       return { html: "Yes, we buy phones, tablets, laptops, consoles and watches, even cracked, locked or dead ones. We pay <b>cash or Zelle</b>, or give trade-in credit. Bring the device and a <b>photo ID</b>.", links: [{ label: "Get a free offer", href: "buy-sell.html#offer" }, HUMAN[0]] };
     if (has(t, /buy a phone|phones for sale|in stock|used phone|refurbished|new phone/))
-      return { html: "We sell new, used and refurbished phones with a <b>30-day technical warranty</b>. Stock changes often, so tell us what you want and we'll call you when it's in.", links: [{ label: "Find me a phone", href: "buy-sell.html#buy" }, HUMAN[0]] };
+      return { html: "We sell new, used and refurbished phones, tablets and laptops, each with a <b>30-day technical warranty</b>, and every phone comes with a screen protector. Stock changes often, so tell us what you want and we'll call you when it's in.", links: [{ label: "See what's in stock", href: "in-stock.html" }, { label: "Find me a phone", href: "buy-sell.html#buy" }, HUMAN[0]] };
     if (has(t, /warranty|guarantee/))
       return { html: "Repairs come with a <b>90-day technical warranty</b>. Phones we sell come with a 30-day technical warranty.", chips: ["Check a price", "Are you open?"] };
     if (has(t, /how long|wait|same day|how fast|turnaround|minutes|today/) && !has(t, /price|cost|how much/))

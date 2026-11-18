@@ -49,6 +49,11 @@ window.FIXIT = {
   // Set to false to stop the emails.
   chatEmail: true,
 
+  // "In stock" page: paste your Google Sheet link here (the "Publish to web" CSV link,
+  // or the normal link with sharing set to "Anyone with the link can view").
+  // Leave it empty to use the list in assets/js/for-sale.js instead.
+  stockSheet: "https://docs.google.com/spreadsheets/d/e/2PACX-1vThQRqqqClgCvevER8U9I7G8JInWJNK6qda3_xx-jX8djZODq0Y3HAemt-LjQ0QKnxXczRQVvVrj2OH/pub?gid=0&single=true&output=csv",
+
   // Reviews ------------------------------------------------------------
   reviews: {
     // Your Google Business listing

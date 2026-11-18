@@ -424,6 +424,9 @@
       ok.innerHTML = CHECK;
       ok.appendChild(document.createTextNode("Thanks" + (first ? ", " + first : "") + ". We’ll call " + ph + " with your price."));
       form.appendChild(ok);
+      var soc = el("p", "qs-social");
+      soc.innerHTML = "Save $5–$10: follow us on <a href=\"https://www.facebook.com/fixit4uofficial\" target=\"_blank\" rel=\"noopener\">Facebook</a> or <a href=\"https://www.instagram.com/fixit4uofficial/\" target=\"_blank\" rel=\"noopener\">Instagram</a> and show it at the counter.";
+      form.appendChild(soc);
     }
     box.appendChild(form);
     box.addEventListener("toggle", function () { if (box.open && form.elements.name) form.elements.name.focus(); });

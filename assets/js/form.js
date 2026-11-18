@@ -374,7 +374,8 @@
       payload._autoresponse = "Thanks for contacting Fixit4U! We received your request for " + deviceLabel() +
         " (" + repairLabel + ") and will reply by " + reply.toLowerCase() + " during business hours with your free quote. " +
         "Walk-ins are welcome, and most repairs are done the same day. Need it sooner? Call " + (C.phoneDisplay || "(334) 849-0404") +
-        ". Fixit4U, 1111 S College St, Ste 200 A, Auburn, AL 36832.";
+        ". Save $5–$10: follow Fixit4U on Facebook or Instagram (@fixit4uofficial) and show it at the counter." +
+        " Fixit4U, 1111 S College St, Ste 200 A, Auburn, AL 36832.";
     } else {
       delete payload.email;
       payload.email_given = "No";

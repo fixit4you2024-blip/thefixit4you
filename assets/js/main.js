@@ -206,6 +206,59 @@
     callDialog.showModal();
   });
 
+  /* ---------- Email links ----------
+     Phones open their mail app. On a computer, a mailto: link does nothing
+     when no email program is set up, so offer Gmail / Outlook / Yahoo / copy. */
+  var emailDialog = null;
+  function buildEmailDialog() {
+    var mail = C.email || "info@thefixit4you.com", to = encodeURIComponent(mail);
+    var d = document.createElement("dialog");
+    d.className = "call-dialog email-dialog";
+    d.setAttribute("aria-labelledby", "email-dialog-title");
+    d.innerHTML =
+      '<button class="call-close" type="button" aria-label="Close">×</button>' +
+      '<p class="call-kicker">Email the shop</p>' +
+      '<h2 id="email-dialog-title">' + mail + "</h2>" +
+      '<p class="call-help">Choose how to send your email:</p>' +
+      '<div class="email-apps">' +
+        '<a class="btn btn-primary" data-mail="gmail" target="_blank" rel="noopener" href="https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '">Gmail</a>' +
+        '<a class="btn btn-primary" data-mail="outlook" target="_blank" rel="noopener" href="https://outlook.live.com/mail/0/deeplink/compose?to=' + to + '">Outlook</a>' +
+        '<a class="btn btn-primary" data-mail="yahoo" target="_blank" rel="noopener" href="https://compose.mail.yahoo.com/?to=' + to + '">Yahoo</a>' +
+      "</div>" +
+      '<div class="btn-row">' +
+        '<button class="btn btn-ghost" type="button" data-copy-email>Copy email</button>' +
+        '<a class="btn btn-ghost" data-direct-email data-mail="app" href="mailto:' + mail + '">Use my email app</a>' +
+      "</div>" +
+      '<p class="call-copied" data-copied role="status" aria-live="polite"></p>';
+    document.body.appendChild(d);
+    d.querySelector(".call-close").addEventListener("click", function () { d.close(); });
+    d.addEventListener("click", function (e) {
+      if (e.target === d) { d.close(); return; }
+      var pick = e.target.closest("[data-mail]");
+      if (pick) {
+        if (window.fxTrack) window.fxTrack("email_choice", { method: pick.getAttribute("data-mail") });
+        setTimeout(function () { d.close(); }, 50);
+      }
+    });
+    d.querySelector("[data-copy-email]").addEventListener("click", function () {
+      var out = d.querySelector("[data-copied]");
+      var done = function () { out.textContent = "Email copied."; };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(mail).then(done, function () { out.textContent = "Select the email above to copy it."; });
+      } else { out.textContent = "Select the email above to copy it."; }
+    });
+    return d;
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="mailto:"]');
+    if (!a || a.hasAttribute("data-direct-email") || isPhone) return;
+    if (typeof HTMLDialogElement === "undefined") return;
+    e.preventDefault();
+    if (!emailDialog) emailDialog = buildEmailDialog();
+    emailDialog.querySelector("[data-copied]").textContent = "";
+    emailDialog.showModal();
+  });
+
   /* ---------- Rating + review links (footer is on every page) ---------- */
   var RV = C.reviews || {};
   if (RV.summary) {
