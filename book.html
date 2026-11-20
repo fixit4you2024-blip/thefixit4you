@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&amp;family=Orbitron:wght@500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611171848">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611200942">
   <meta property="og:site_name" content="Fixit4U">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
@@ -133,16 +133,21 @@
                   <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(334) 555-0123" required aria-describedby="f-phone-error">
                   <p class="field-error" id="f-phone-error" hidden></p>
                 </div>
+                <div class="field full" data-bk-email>
+                  <label for="f-email">Email</label>
+                  <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-error">
+                  <p class="field-error" id="f-email-error" hidden></p>
+                </div>
                 <div class="field full">
                   <span class="bk-label" id="bk-reply-label">Reply by</span>
                   <div class="chips" role="radiogroup" aria-labelledby="bk-reply-label">
-                    <span class="chip"><input type="radio" name="reply" id="bk-r1" value="Text" checked><label for="bk-r1">Text</label></span>
+                    <span class="chip"><input type="radio" name="reply" id="bk-r3" value="Email" checked><label for="bk-r3">Email</label></span>
+                    <span class="chip"><input type="radio" name="reply" id="bk-r1" value="Text"><label for="bk-r1">Text</label></span>
                     <span class="chip"><input type="radio" name="reply" id="bk-r2" value="Call"><label for="bk-r2">Call</label></span>
-                    <span class="chip"><input type="radio" name="reply" id="bk-r3" value="Email"><label for="bk-r3">Email</label></span>
                   </div>
                 </div>
-                <details class="field full bk-disc" data-bk-disc>
-                  <summary id="bk-disc-label">Have a discount? <span class="opt">(students, military and more)</span></summary>
+                <div class="field full bk-disc" data-bk-disc>
+                  <span class="bk-label" id="bk-disc-label">Have a discount? <span class="opt">(students, military and more)</span></span>
                   <div class="chips" role="radiogroup" aria-labelledby="bk-disc-label">
                     <span class="chip"><input type="radio" name="discount" id="bk-d0" value="None" checked><label for="bk-d0">None</label></span>
                     <span class="chip"><input type="radio" name="discount" id="bk-d1" value="Student"><label for="bk-d1">Student</label></span>
@@ -151,11 +156,6 @@
                     <span class="chip"><input type="radio" name="discount" id="bk-d5" value="Follows us on social media"><label for="bk-d5">I follow you on social</label></span>
                   </div>
                   <a class="bk-disc-link" href="discounts.html" target="_blank" rel="noopener">See all discounts</a>
-                </details>
-                <div class="field full" data-bk-email hidden>
-                  <label for="f-email">Email</label>
-                  <input id="f-email" name="email" type="email" autocomplete="email" aria-describedby="f-email-error">
-                  <p class="field-error" id="f-email-error" hidden></p>
                 </div>
               </div>
               <div class="hp-field" aria-hidden="true">
@@ -281,13 +281,13 @@
     <a class="btn btn-ghost" href="tel:+13348490404">Call now</a>
     <a class="btn btn-primary" href="book.html">Free quote</a>
   </nav>
-  <script src="assets/js/fx.js?v=202611171848" defer></script>
-  <script src="assets/js/analytics.js?v=202611171848" defer></script>
-  <script src="assets/js/assistant.js?v=202611171848" defer></script>
+  <script src="assets/js/fx.js?v=202611200942" defer></script>
+  <script src="assets/js/analytics.js?v=202611200942" defer></script>
+  <script src="assets/js/assistant.js?v=202611200942" defer></script>
 
-  <script src="assets/js/config.js?v=202611171848"></script>
-  <script src="assets/js/pricing-data.js?v=202611171848"></script>
-  <script src="assets/js/main.js?v=202611171848"></script>
-  <script src="assets/js/form.js?v=202611171848"></script>
+  <script src="assets/js/config.js?v=202611200942"></script>
+  <script src="assets/js/pricing-data.js?v=202611200942"></script>
+  <script src="assets/js/main.js?v=202611200942"></script>
+  <script src="assets/js/form.js?v=202611200942"></script>
 </body>
 </html>

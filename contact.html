@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700&amp;family=Orbitron:wght@500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="assets/css/styles.css?v=202611171848">
+  <link rel="stylesheet" href="assets/css/styles.css?v=202611200942">
   <meta property="og:site_name" content="Fixit4U">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
@@ -228,6 +228,11 @@
                 <input id="m-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(334) 555-0123" aria-describedby="m-phone-err">
                 <p class="field-error" id="m-phone-err" hidden></p>
               </div>
+              <div class="field full" data-msg-email>
+                <label for="m-email">Email</label>
+                <input id="m-email" name="email" type="email" autocomplete="email" aria-describedby="m-email-err">
+                <p class="field-error" id="m-email-err" hidden></p>
+              </div>
               <div class="field full">
                 <label for="m-message">Message</label>
                 <textarea id="m-message" name="message" maxlength="2000" placeholder="How can we help?" aria-describedby="m-message-err"></textarea>
@@ -236,15 +241,10 @@
               <div class="field full">
                 <span class="bk-label" id="m-reply-label">Reply by</span>
                 <div class="chips" role="radiogroup" aria-labelledby="m-reply-label">
-                  <span class="chip"><input type="radio" name="reply" id="m-r1" value="Text" checked><label for="m-r1">Text</label></span>
+                  <span class="chip"><input type="radio" name="reply" id="m-r3" value="Email" checked><label for="m-r3">Email</label></span>
+                  <span class="chip"><input type="radio" name="reply" id="m-r1" value="Text"><label for="m-r1">Text</label></span>
                   <span class="chip"><input type="radio" name="reply" id="m-r2" value="Call"><label for="m-r2">Call</label></span>
-                  <span class="chip"><input type="radio" name="reply" id="m-r3" value="Email"><label for="m-r3">Email</label></span>
                 </div>
-              </div>
-              <div class="field full" data-msg-email hidden>
-                <label for="m-email">Email</label>
-                <input id="m-email" name="email" type="email" autocomplete="email" aria-describedby="m-email-err">
-                <p class="field-error" id="m-email-err" hidden></p>
               </div>
             </div>
             <input type="text" name="_honey" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true">
@@ -346,12 +346,12 @@
     <a class="btn btn-ghost" href="tel:+13348490404">Call now</a>
     <a class="btn btn-primary" href="book.html">Free quote</a>
   </nav>
-  <script src="assets/js/fx.js?v=202611171848" defer></script>
-  <script src="assets/js/analytics.js?v=202611171848" defer></script>
-  <script src="assets/js/assistant.js?v=202611171848" defer></script>
+  <script src="assets/js/fx.js?v=202611200942" defer></script>
+  <script src="assets/js/analytics.js?v=202611200942" defer></script>
+  <script src="assets/js/assistant.js?v=202611200942" defer></script>
 
-  <script src="assets/js/config.js?v=202611171848"></script>
-  <script src="assets/js/main.js?v=202611171848"></script>
-  <script src="assets/js/contact.js?v=202611171848"></script>
+  <script src="assets/js/config.js?v=202611200942"></script>
+  <script src="assets/js/main.js?v=202611200942"></script>
+  <script src="assets/js/contact.js?v=202611200942"></script>
 </body>
 </html>
